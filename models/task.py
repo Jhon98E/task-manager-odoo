@@ -45,5 +45,20 @@ class TaskManager(models.Model):
             )
         self.state = 'done'
 
+    @api.model
+    def get_task_counts(self):
+        states = ['backlog', 'in_progress', 'review', 'done']
+        labels = {
+            'backlog': 'Backlog',
+            'in_progress': 'En progreso',
+            'review': 'En revisión',
+            'done': 'Completado',
+        }
+        result = {}
+        for state in states:
+            count = self.search_count([('state', '=', state)])
+            result[labels[state]] = count
+        return result
+
     def action_reset(self):
         self.state = 'backlog'

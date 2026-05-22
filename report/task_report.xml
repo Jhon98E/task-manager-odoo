@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Plantilla QWeb del reporte -->
+    <template id="report_task_manager_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+
+                        <h2 class="text-center mb-4">Reporte de Tarea</h2>
+
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Tarea</strong></td>
+                                    <td><span t-field="doc.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Responsable</strong></td>
+                                    <td><span t-field="doc.responsible_id"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Prioridad</strong></td>
+                                    <td><span t-field="doc.priority"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Fecha límite</strong></td>
+                                    <td><span t-field="doc.deadline"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Estado</strong></td>
+                                    <td><span t-field="doc.state"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Descripción</strong></td>
+                                    <td><span t-field="doc.description"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Acción del reporte -->
+    <record id="action_report_task_manager" model="ir.actions.report">
+        <field name="name">Reporte de Tarea</field>
+        <field name="model">task.manager</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">task_manager.report_task_manager_template</field>
+        <field name="report_file">task_manager.report_task_manager_template</field>
+        <field name="binding_model_id" ref="model_task_manager"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

@@ -11,6 +11,7 @@
         'views/task_views.xml',
         'views/search_views.xml',
         'views/menu.xml',
+        'report/task_report.xml',
     ],
     'demo': [
         'data/demo.xml',
