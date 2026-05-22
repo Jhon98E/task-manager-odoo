@@ -5,7 +5,7 @@
     'description': 'Módulo para gestionar tareas por estados: Backlog, En progreso, En revisión y Completado.',
     'author': 'Jhon David Enriquez',
     'category': 'Project',
-    'depends': ['base'],
+    'depends': ['base', 'mail'],
     'data': [
         'security/ir.model.access.csv',
         'views/task_views.xml',

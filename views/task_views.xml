@@ -43,6 +43,7 @@
                         </page>
                     </notebook>
                 </sheet>
+                <chatter/>
             </form>
         </field>
     </record>
@@ -76,7 +77,7 @@
                 <field name="color"/>
                 <templates>
                     <t t-name="card">
-                        <div class="oe_kanban_card">
+                        <div t-attf-class="oe_kanban_card #{record.priority.raw_value == '2' ? 'border-danger' : record.priority.raw_value == '1' ? 'border-warning' : ''}">
                             <div class="o_kanban_record_top">
                                 <strong><field name="name"/></strong>
                             </div>
@@ -87,6 +88,8 @@
                             </div>
                             <div class="o_kanban_record_bottom">
                                 <field name="priority" widget="priority"/>
+                                <span t-if="record.priority.raw_value == '2'" class="badge text-bg-danger ms-1">Urgente</span>
+                                <span t-if="record.priority.raw_value == '1'" class="badge text-bg-warning ms-1">Importante</span>
                             </div>
                         </div>
                     </t>

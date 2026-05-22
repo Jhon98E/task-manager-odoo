@@ -1,9 +1,11 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class TaskManager(models.Model):
     _name = 'task.manager'
     _description = 'Tarea'
     _order = 'priority desc, deadline asc'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Tarea', required=True)
     description = fields.Text(string='Descripción')
@@ -19,8 +21,16 @@ class TaskManager(models.Model):
         ('in_progress', 'En progreso'),
         ('review',      'En revisión'),
         ('done',        'Completado'),
-    ], string='Estado', default='backlog')
+    ], string='Estado', default='backlog', tracking=True)
     color = fields.Integer(string='Color')
+
+    @api.constrains('description', 'state')
+    def _check_description_before_done(self):
+        for record in self:
+            if record.state == 'done' and not record.description:
+                raise ValidationError(
+                    'No puedes completar una tarea sin agregar una descripción.'
+                )
 
     def action_start(self):
         self.state = 'in_progress'
@@ -29,6 +39,10 @@ class TaskManager(models.Model):
         self.state = 'review'
 
     def action_done(self):
+        if not self.description:
+            raise ValidationError(
+                'No puedes completar una tarea sin agregar una descripción.'
+            )
         self.state = 'done'
 
     def action_reset(self):
