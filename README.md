@@ -6,18 +6,29 @@ Módulo personalizado para Odoo 19 que permite gestionar tareas con un flujo de 
 
 - Tablero Kanban con columnas: Backlog, En progreso, En revisión, Completado
 - Vista Lista y Formulario
-- Gestión de prioridades (Normal, Importante, Urgente)
+- Gestión de prioridades (Normal, Importante, Urgente) con colores en Kanban
 - Asignación de responsables
 - Fechas límite
 - Filtros por estado y prioridad
 - Agrupaciones por estado, prioridad, responsable y fecha
+- Historial de cambios de estado (Chatter)
+- Validación: no se puede completar una tarea sin descripción
+- Reporte PDF imprimible con QWeb
+- Datos de demo precargados
 
 ## Tecnologías
 
 - Odoo 19 Community
 - Python 3
-- XML (vistas)
+- XML (vistas QWeb)
 - PostgreSQL
+
+## Requisitos del sistema
+
+- Odoo 19 Community
+- wkhtmltopdf (para generación de reportes PDF)
+  - Windows: https://wkhtmltopdf.org/downloads.html
+  - Linux: `sudo apt install wkhtmltopdf`
 
 ## Instalación
 
@@ -30,6 +41,5 @@ Módulo personalizado para Odoo 19 que permite gestionar tareas con un flujo de 
 
 ## Autor
 
-Jhon David Enriquez  
-Tecnólogo en Desarrollo de Software  
-Estudiante de Ingeniería de Software
+Jhon David Enriquez
+Desarrollador de Software
