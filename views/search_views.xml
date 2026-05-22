@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_task_manager_search" model="ir.ui.view">
+        <field name="name">task.manager.search</field>
+        <field name="model">task.manager</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Tareas">
+
+                <filter name="filter_backlog" string="Backlog" domain="[('state', '=', 'backlog')]"/>
+                <filter name="filter_in_progress" string="En progreso" domain="[('state', '=', 'in_progress')]"/>
+                <filter name="filter_review" string="En revisión" domain="[('state', '=', 'review')]"/>
+                <filter name="filter_done" string="Completadas" domain="[('state', '=', 'done')]"/>
+
+                <separator/>
+
+                <filter name="filter_urgent" string="Urgentes" domain="[('priority', '=', '2')]"/>
+                <filter name="filter_important" string="Importantes" domain="[('priority', '=', '1')]"/>
+
+                <separator/>
+
+                <filter name="group_state" string="Agrupar por Estado" context="{'group_by': 'state'}"/>
+                <filter name="group_priority" string="Agrupar por Prioridad" context="{'group_by': 'priority'}"/>
+                <filter name="group_responsible" string="Agrupar por Responsable" context="{'group_by': 'responsible_id'}"/>
+
+            </search>
+        </field>
+    </record>
+
+</odoo>

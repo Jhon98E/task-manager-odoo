@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="demo_task_1" model="task.manager">
+        <field name="name">Diseñar base de datos</field>
+        <field name="description">Crear el modelo entidad-relación del sistema.</field>
+        <field name="priority">2</field>
+        <field name="deadline">2026-06-01</field>
+        <field name="state">backlog</field>
+    </record>
+
+    <record id="demo_task_2" model="task.manager">
+        <field name="name">Desarrollar API REST</field>
+        <field name="description">Crear endpoints para el módulo de clientes.</field>
+        <field name="priority">1</field>
+        <field name="deadline">2026-06-10</field>
+        <field name="state">in_progress</field>
+    </record>
+
+    <record id="demo_task_3" model="task.manager">
+        <field name="name">Revisar código del módulo</field>
+        <field name="description">Code review del sprint anterior.</field>
+        <field name="priority">1</field>
+        <field name="deadline">2026-05-28</field>
+        <field name="state">review</field>
+    </record>
+
+    <record id="demo_task_4" model="task.manager">
+        <field name="name">Documentar instalación</field>
+        <field name="description">Escribir el README del módulo.</field>
+        <field name="priority">0</field>
+        <field name="deadline">2026-05-25</field>
+        <field name="state">done</field>
+    </record>
+
+</odoo>
